@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ERS Reimbursement</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="css\styles.css">
+        <script>
+        
+        </script>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div class="containers" id="reimbursementContainer">
+            <div class="headerDivs" id="reimbursementHeaderDiv">
+                <header class="headers" id="reimbursementHeader">
+                    <h1>ERS - Reimbursements</h1>
+                </header>
+            </div>
+            <div class="mainContentDivs" id="reimbursementContentDiv">
+                <div class="formDivs" id="reimbursementFormDiv">
+                    <h3>Reimbursement Information</h3>
+                    <form class="formInfo" id="reimbursementForm" method="POST" action="">
+                        <fieldset class="formFieldsets" id="reimbursementFormFieldset">
+                            <legend class="formsLegends" id="reimbursementLegend">Reimbursement Information:</legend>
+                            <table class="formTables" id="reimbursementTable">
+                                <tr class="tdRows" id="reimbursementRow1">
+                                    <td class="tdInfo" id="tdInfo1">
+                                        <label class="labels" for="reimbursementId">Reimbursement ID:</label>
+                                    </td>
+                                    <td class="tdInputs" id="tdInput1">
+                                        <input class="inputs" id="reimbursementId" name="reimbursementId"
+                                         size="40" value="" type="text" placeholder="Reimbursement ID" />
+                                    </td>
+                                    <td class="tdInfo" id="tdInfo2">
+                                            <label class="labels" for="author">Author:</label></td>
+                                    <td class="tdInputs" id="tdInput2">
+                                        <input class="inputs" id="author" name="author" 
+                                         size="40" value="" type="text" placeholder="Author"/>
+                                    </td>
+                                </tr>
+                                <tr class="tdRows" id="reimbursementRow2">
+                                    <td class="tdInfo" id="tdInfo3">
+                                        <label class="labels" for="amount">Amount:</label>
+                                    </td>
+                                    <td class="tdInputs" id="tdInput3">
+                                        <input class="inputs" id="amount" name="amount"
+                                            size="40" value="" type="text" placeholder="Amount" />
+                                    </td>
+                                    <td class="tdInfo" id="tdInfo4">
+                                        <label class="labels" for="type">Type:</label></td>
+                                    <td class="tdInputs" id="tdInput4">
+                                        <input class="inputs" id="type" name="type" 
+                                            size="40" value="" type="text" placeholder="Type"/>
+                                    </td>
+                                </tr>
+                                <tr class="tdRows" id="reimbursementRow3">
+                                    <td class="tdInfo" id="tdInfo5">
+                                        <label class="labels" for="description">Description:</label></td>
+                                    <td class="tdInputs" id="tdInput5">
+                                        <input class="inputs" id="description" name="description" 
+                                            size="40" value="" type="text" placeholder="Description"/>
+                                     </td>
+                                    <td class="tdInfo" id="tdInfo6">
+                                                <label class="labels" for="status">Status:</label>
+                                    </td>
+                                    <td class="tdInputs" id="tdInput6">
+                                        <input class="inputs" id="status" name="status" 
+                                            size="40" value="" type="text" placeholder="Status"/>
+                                    </td>
+                                </tr>
+                                <tr class="tdRows" id="reimbursementRow4">
+                                    <td class="tdInfo" id="tdInfo7">
+                                        <label class="labels" for="dateSubmitted">Date Submitted:</label>
+                                    </td>
+                                    <td class="tdInputs" id="tdInput7">
+                                        <input class="inputs" id="dateSubmitted" name="dateSubmitted"
+                                            size="40" value="" type="date" placeholder="Date Submitted" />
+                                    </td>
+                                    <td class="tdInfo" id="tdInfo8">
+                                        <label class="labels" for="dateResolved">Date Resolved:</label>
+                                    </td>
+                                    <td class="tdInputs" id="tdInput8">
+                                            <input class="inputs" id="dateResolved" name="dateResolved" 
+                                                size="40" value="" type="date" placeholder="Date Resolved"/>
+                                    </td>                                             
+                                </tr>
+                                <tr class="tdRows" id="reimbursementRow5">
+                                    <td  class="tdInputs" id="tdInput9" colspan="4"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="submit" class="submits" id="submitReimbursement"
+                                        name="submitReimbursement" value="Submit Form" />                                                       
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                    </form>
+                    <!--<div class="btnDivs" id="reimbursementBtnDiv">
+                            <button class="submitBtns" id="reimburseBtnDiv" type="submit" name="reimburseBtnDiv" >SUBMIT</button>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+body {background-color: gray; margin: -20px 0;}
+.inputs {margin-left:1px;margin-right:20px;margin-bottom: 6px;margin-top:6px;
+    border:1px solid black;border-radius:6px;padding: 6px 4px;}
+.submitBtns {padding:10px;border:1px solid black;border-radius: 6px;}
+.tdInfo {vertical-align:middle;}
+.btnDivs {margin-top: 10px;}
+.mainContentDivs {text-align:center; color:white;text-shadow:2px 1px 1px black;}
+.headerDivs {background: black;height:46px;}
+#indexHeaderDiv {background: linear-gradient(to right, black, white);}
+.headers {margin: 20px;color: white;}
+.radios {margin-right:30px;cursor: pointer;}
+.logins {float: right;font-size:14px;margin-top:12px;}
+#indexMainContent {font-size:30px; position: absolute;top:50%;left:50%;transform: translate(-50%, -50%);}
+#ers_login {text-shadow: 1px 1px 1px white;}
+/*#submitStatus {margin-top:20px;padding:8px;border:1px solid black;border-radius: 6px;} */
+.submits {margin-top:20px;padding:8px;border:1px solid black;border-radius: 6px;cursor: pointer;}
+#reimTypeRow2 {text-align: left;}
+#reimStatusRow2 {text-align: left;}
+
+
+

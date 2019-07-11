@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ERS Reimbursement Status</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="css\styles.css">
+        <script></script>
+        <style></style>
+    </head>
+    <body>
+        <div class="containers" id="reimStatusContainer">
+            <div class="headerDivs" id="reimStatusHeaderDiv">
+                <header class="headers" id="reimStatusHeader">
+                    <h1>ERS - Reimbursement Status</h1>
+                </header>
+            </div>
+            <div class="mainContentDivs" id="reimStatusContentDiv">
+                <div class="formDivs" id="reimStatusFormDiv">
+                    <h3>Reimbursement Status</h3>
+                    <form class="formInfo" id="reimStatusInfo" method="POST" action="">
+                        <fieldset class="formFieldsets" id="reimStatusFormFieldset">
+                            <legend class="formsLegends" id="reimStatusLegend">Reimbursement Status:</legend>
+                            <table class="formTables" id="reimStatusTable">
+                                <tr class="tdRows" id="reimStatusRow1">
+                                    <td class="tdInfo" id="tdInfo1">
+                                        <label class="labels" for="statusID">Reimbursement Status ID:</label>
+                                    </td>
+                                    <td class="tdInputs" id="tdInput1">
+                                        <input class="inputs" id="statusID" name="statusID"
+                                         size="40" value="" type="text" placeholder="Status ID" />
+                                    </td>
+                                    <!--<td class="tdInfo" id="tdInfo2">
+                                            <label class="labels" for="status">Status:</label>
+                                    </td>
+                                    <td class="tdInputs" id="tdInput2">
+                                        <input class="inputs" id="status" name="status" 
+                                         size="40" value="" type="text" placeholder="Status"/>
+                                    </td> -->
+                                </tr>
+                                <tr class="tdRows" id="reimStatusRow2">
+                                    <span><td class="tdInfo" id="tdInfo3">STATUS:</td></span>
+                                    <br/>
+                                    <td>
+                                        <label class="labels">Pending 
+                                        <input type="radio" class="radios" id="approved" name="radios" 
+                                            value="approved" /></label>
+                                    
+                                        <label class="labels">Approved
+                                        <input type="radio" class="radios" id="denied" name="radios" 
+                                            value="denied" /></label>
+                                    
+                                        <label class="labels">Denied
+                                            <input type="radio" class="radios" id="denied" name="radios" 
+                                            value="denied" /></label>
+                                    </td>                                    
+                                </tr>
+                                <tr class="tdRows" id="reimStatusRow3">
+                                    <td colspan="2" rowspan="2">
+                                        <input type="submit" class="submits"  id="submitStatus" name="submitStatus" 
+                                            value="Submit Form" />
+                                    </td>
+                                </tr>
+        <!-- If radio btns are incorrect, use 
+            <select name="">
+                <option value="cars">Cars</option>
+            </select> -->
+                            </table>
+                        </fieldset>
+                    </form>
+                    <!--<div class="btnDivs" id="reimStatusBtnDiv">
+                            <button class="submitBtns" id="reimStatusBtn" type="submit" >SUBMIT</button>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
