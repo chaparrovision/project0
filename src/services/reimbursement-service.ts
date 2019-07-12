@@ -2,6 +2,7 @@ import Reimbursement from "../models/Reimbursement";
 //import Role from "../models/Role";
 //let userIdCounter: number = 1;
 const reimbursementUserMap: Map<Number, Reimbursement> = new Map();
+const reimbursementStatusMap: Map<Number, Reimbursement> = new Map();
 /* Dylan's database went here, in the form of let variables for each role array, 
 then the combined array, which was named 'users'.
 */
@@ -11,9 +12,16 @@ export function createReimbursementUser(reimbursementUser): Reimbursement {
     reimbursementUserMap.set(reimbursementUser.id, reimbursementUser);
     return reimbursementUser;
 }
+export function createReimbursementStatus(reimbursementStatus): Reimbursement {  
+    reimbursementStatusMap.set(reimbursementStatus.id, reimbursementStatus);
+    return reimbursementStatus;
+}
 
 export function reimbursementUserById(id: number) {
     return reimbursementUserMap.get(id);
+}
+export function reimbursementStatusById(id: number) {
+    return reimbursementStatusMap.get(id);
 } 
 //reimbursementUserService
 /*

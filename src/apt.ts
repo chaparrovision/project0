@@ -2,7 +2,8 @@ import express, {Request, Response} from 'express'; //will locate express node-m
 import bodyParser from 'body-parser'; // checks for mimetype json, converts to JS.
 import userIdRouter from './routers/userId-router';
 import loginRouter from './routers/login-router';
-import reimbursementUserRouter from './routers/login-router';
+import reimbursementUserRouter from './routers/reimbursementUser-router';
+import reimbursementStatusRouter from './routers/reimbursementStatus-router';
 
 // creating instance of express App by calling express method
 const app = express();
@@ -39,6 +40,7 @@ app.use( (request: Request, response: Response, next) => {
 app.use('/userIds', userIdRouter); //specifies the name called on Postman, like localhost:3000/userIds
 app.use('/login', loginRouter);
 app.use('/reimbursementUsers', reimbursementUserRouter) //other files not seeing this.
+app.use('/reimbursementStatus', reimbursementStatusRouter) //other files not seeing this.
 
 //Below starts server on port 3000 -port is an access point on the server
 app.listen(3000, () => {

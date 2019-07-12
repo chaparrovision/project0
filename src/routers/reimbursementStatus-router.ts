@@ -1,8 +1,8 @@
 import express, {Request, Response,} from 'express';
 import Reimbursement from '../models/Reimbursement';
-import * as reimbursementUserService from '../services/reimbursement-service';
+import * as reimbursementStatusService from '../services/reimbursement-service';
 
-const reimbursementUserRouter = express.Router();
+const reimbursementStatusRouter = express.Router();
 //const loginRouter = express.Router();
 
 /**
@@ -15,22 +15,22 @@ const reimbursementUserRouter = express.Router();
 // Handle the creation of a new cat.  We want to deal strictly with the
 //request/response objects here and delegate the internal logic to a 'service'.
  
-reimbursementUserRouter.post('',(request:Request, response:Response) => {
-    console.log('Handling post to reimbursementUsers');
-    const reimbursementUser = reimbursementUserService.createReimbursementUser(request.body);
-        if (reimbursementUser) {
-            response.status(201).json(reimbursementUser);
+reimbursementStatusRouter.post('',(request:Request, response:Response) => {
+    console.log('Handling post to reimbursementStatus');
+    const reimbursementStatus = reimbursementStatusService.createReimbursementStatus(request.body);
+        if (reimbursementStatus) {
+            response.status(201).json(reimbursementStatus);
         } else {
             response.sendStatus(500);
         }
  });
  
- reimbursementUserRouter.get('/:id',(request: Request, response:Response) => {
+ reimbursementStatusRouter.get('/:id',(request: Request, response:Response) => {
      const id= parseInt(request.params.id);
      console.log('Handling request for Reimbursement with id: ' + id);
-     const reimbursementUserId: Reimbursement = reimbursementUserService.reimbursementUserById(id);
-     if (reimbursementUserId) {
-         response.json(reimbursementUserId);
+     const reimbursementStatusId: Reimbursement = reimbursementStatusService.reimbursementStatusById(id);
+     if (reimbursementStatusId) {
+         response.json(reimbursementStatusId);
      } else {
          // not found
         response.sendStatus(404);
@@ -50,4 +50,4 @@ reimbursementUserRouter.post('',(request:Request, response:Response) => {
 });
 */
 
-export default reimbursementUserRouter;
+export default reimbursementStatusRouter;
