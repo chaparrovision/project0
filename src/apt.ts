@@ -1,14 +1,21 @@
 import express, {Request, Response} from 'express'; //will locate express node-modules folder
 import bodyParser from 'body-parser'; // checks for mimetype json, converts to JS.
+import session from 'express-session';
 import userIdRouter from './routers/userId-router';
 import loginRouter from './routers/login-router';
 import reimbursementUserRouter from './routers/reimbursementUser-router';
 import reimbursementStatusRouter from './routers/reimbursementStatus-router';
+import { closePool } from './util/pg-connector';
 
 // creating instance of express App by calling express method
-const app = express();
-const port = 3000; 
-
+const app = express(); //sets up express
+//const port = 3000; 
+// Process
+const port = process.env.port || 3000;
+// Close the pool when app shuts down
+/*process.on('SIGINT', async () => {
+    await closePool();
+});  */
 /*Middleware
 When requests are received by Express they pass thru layers of middleware.  
 Essentially, express has an array of middleware functions.
@@ -24,6 +31,14 @@ app.use(bodyParser.json());
 //registering middleware
 //app.use(/* middleware function */)
 // If we want typing: npm install --only-dev @types/express
+
+// session-express code below
+app.use(session({
+    resave: false,
+    saveUnitialized: true,
+    secret: 'my-secret',
+}));
+
 app.use( (request: Request, response: Response, next) => {
     console.log('Request received for ' + request.url);
     next();

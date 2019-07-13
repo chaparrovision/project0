@@ -5,14 +5,20 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node src/apt.ts"
+    "start": "nodemon --exec ts-node src/App.ts"
   },
   "author": "David Chaparro",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^12.0.12",
+    "@types/node": "^12.6.2",
+    "@types/pg": "^7.4.14",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "pg": "^7.11.0"
+    "express-session": "^1.16.2",
+    "pg": "^7.11.0",
+    "tslint": "^5.18.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.0"
   }
 }
