@@ -2,25 +2,28 @@
 that an employee would submit */
 export default class Reimbursement {
     reimbursementId: number; // primary key
-    author: number; // foreign key -> User, not null    
-    amount: number; // not null    
-    dateSubmitted: number; // not null    
-    dateResolved: number; //
-    description: string; // not null
-    resolver: number; //foreign key -> User
-    status: number;  //foreign key -> ReimbursementStatus, not null
-    type: number; // foreign key -> ReimbursementType
-
-    constructor(reimbursementId:number, author:number, amount:number, dateSubmitted:number,
-        dateResolved:number, description:string, resolver:number, status:number, type:number)  {
-        this.reimbursementId = reimbursementId; // primary key
-        this.author = author;  // not null, unique
-        this.amount = amount; // not null
-        this.dateSubmitted = dateSubmitted; // not null
-        this.dateResolved = dateResolved;  // not null
-        this.description = description; // not null
-        this.resolver = resolver;  // not null
-        this.status = status;  // not null
-        this.type = type;  // not null
-   }
+    author: number // not null, unique 
+    amount: number // not null
+    dateSubmitted: number // not null
+    dateResolved: number // not null
+    description: string // not null
+    resolver: number // not null
+    status: number // not null
+    type: number // not null
+    
+    constructor(obj: { reimbursementId:number, author:number, amount:number, dateSubmitted:number,
+        dateResolved:number, description:string, resolver:number, status:number, type:number; }) {
+        if (!obj) {
+            return;
+        }
+        this.reimbursementId = obj.reimbursementId;//primary key
+        this.author = obj.author; //not null unique
+        this.amount = obj.amount; //not null 
+        this.dateSubmitted = obj.dateSubmitted; //not null 
+        this.dateResolved = obj.dateResolved; //not null 
+        this.description = obj.description; //not null 
+        this.resolver = obj.resolver; //not null 
+        this.status = obj.status; //not null 
+        this.type = obj.type; //not null 
+    }
 }

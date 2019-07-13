@@ -1,15 +1,16 @@
 import express, {Request, Response,} from 'express';
 import Reimbursement from '../models/Reimbursement';
-import ReimbursementStatus from '../models/ReimbursementStatus';
-import * as reimbursementStatusService from '../services/reimbursementStatus-service';
+import * as reimbursementService from '../services/reimbursement-service';
+//import ReimbursementStatus from '../models/ReimbursementStatus';
+//import * as reimbursementStatusService from '../services/reimbursementStatus-service';
 
-const reimbursementStatusRouter = express.Router();
+const reimbursementRouter = express.Router();
 
-reimbursementStatusRouter.post('',
+reimbursementRouter.post('',
     (request: Request, response: Response) => {
-        const reimbursementStatus = new ReimbursementStatus(request.body);
+        const reimbursement = new Reimbursement(request.body);
 
-        reimbursementStatusService.createReimbursementStatus(reimbursementStatus)
+        reimbursementService.createReimbursement(reimbursement)
             // This handler receives the row data
             // from the service method
             .then((rows) => {
@@ -21,13 +22,13 @@ reimbursementStatusRouter.post('',
             });
     });
 
-reimbursementStatusRouter.get('/:statusId',
+reimbursementRouter.get('/:reimbursementId',
     async (request: Request, response: Response) => {
         const id = parseInt(request.params.statusId);
 
-        const item: ReimbursementStatus = await reimbursementStatusService.getReimbursementStatusById(id);
+        const item: Reimbursement = await reimbursementService.getReimbursementById(id);
 
-        if (item.statusId) {
+        if (item.reimbursementId) {
             response.status(200).json(item);
         } else {
             response.sendStatus(404);
@@ -35,14 +36,14 @@ reimbursementStatusRouter.get('/:statusId',
 
     });
 
-reimbursementStatusRouter.patch('',
+reimbursementRouter.patch('',
     async (request: Request, response: Response) => {
-        const patch: ReimbursementStatus = request.body;
+        const patch: Reimbursement = request.body;
 
         // const patchedInv: Inventory = await inventoryService.patchInventory(patch);
-        const patchedInv: ReimbursementStatus = await reimbursementStatusService.patchCoalesce(patch);
+        const patchedInv: Reimbursement = await reimbursementService.patchCoalesce(patch);
         
-        if (patchedInv.statusId) {
+        if (patchedInv.reimbursementId) {
             response.json(patchedInv);
         } else {
 
@@ -51,10 +52,10 @@ reimbursementStatusRouter.patch('',
         response.sendStatus(200);
     });
 
-reimbursementStatusRouter.delete('/:id',
+reimbursementRouter.delete('/:id',
     (request: Request, response: Response) => {
 
         response.sendStatus(200);
     });
 
-export default reimbursementStatusRouter;
+export default reimbursementRouter;

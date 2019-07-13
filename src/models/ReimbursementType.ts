@@ -6,10 +6,13 @@ Lodging, Travel, Food, or Other.
 
 export default class ReimbursementType {
     typeId: number; // primary key
-    type: string // not null, unique
+    type: string // not null, unique 
     
-    constructor(typeId:number, type:string) {
-        this.typeId = typeId;
-        this.type = type;        
+    constructor(obj: { typeId: number; type: string; }) {
+        if (!obj) {
+            return;
+        }
+        this.typeId = obj.typeId;
+        this.type = obj.type;
     }
 }

@@ -7,8 +7,11 @@ export default class ReimbursementStatus {
     statusId: number; // primary key
     status: string // not null, unique 
     
-    constructor(statusId: number, status: string) {
-        this.statusId = statusId;
-        this.status = status;
+    constructor(obj: { statusId: number; status: string; }) {
+        if (!obj) {
+            return;
+        }
+        this.statusId = obj.statusId;
+        this.status = obj.status;
     }
 }

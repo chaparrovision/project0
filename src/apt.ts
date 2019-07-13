@@ -3,9 +3,11 @@ import bodyParser from 'body-parser'; // checks for mimetype json, converts to J
 import session from 'express-session';
 import userIdRouter from './routers/userId-router';
 import loginRouter from './routers/login-router';
-import reimbursementUserRouter from './routers/reimbursementUser-router';
+import reimbursementRouter from './routers/reimbursement-router';
 import reimbursementStatusRouter from './routers/reimbursementStatus-router';
+import reimbursementTypeRouter from './routers/reimbursementStatus-router';
 import { closePool } from './util/pg-connector';
+import userRouter from './routers/user-router';
 
 // creating instance of express App by calling express method
 const app = express(); //sets up express
@@ -13,9 +15,9 @@ const app = express(); //sets up express
 // Process
 const port = process.env.port || 3000;
 // Close the pool when app shuts down
-/*process.on('SIGINT', async () => {
+process.on('SIGINT', async () => {
     await closePool();
-});  */
+});  
 /*Middleware
 When requests are received by Express they pass thru layers of middleware.  
 Essentially, express has an array of middleware functions.
@@ -35,7 +37,7 @@ app.use(bodyParser.json());
 // session-express code below
 app.use(session({
     resave: false,
-    saveUnitialized: true,
+    saveUninitialized: true,
     secret: 'my-secret',
 }));
 
@@ -54,8 +56,9 @@ app.use( (request: Request, response: Response, next) => {
  We need to remember to register the routes here */
 app.use('/userIds', userIdRouter); //specifies the name called on Postman, like localhost:3000/userIds
 app.use('/login', loginRouter);
-app.use('/reimbursementUsers', reimbursementUserRouter) //other files not seeing this.
-app.use('/reimbursementStatus', reimbursementStatusRouter) //other files not seeing this.
+app.use('/reimbursement', reimbursementRouter) 
+app.use('/reimbursementStatus', reimbursementStatusRouter) 
+app.use('/reimbursementType', reimbursementTypeRouter) //other files not seeing this.
 
 //Below starts server on port 3000 -port is an access point on the server
 app.listen(3000, () => {

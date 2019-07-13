@@ -1,47 +1,72 @@
 import Reimbursement from "../models/Reimbursement";
 //import Role from "../models/Role";
-//let userIdCounter: number = 1;
-const reimbursementUserMap: Map<Number, Reimbursement> = new Map();
-const reimbursementStatusMap: Map<Number, Reimbursement> = new Map();
-/* Dylan's database went here, in the form of let variables for each role array, 
-then the combined array, which was named 'users'.
-*/
-export function createReimbursementUser(reimbursementUser): Reimbursement {
-    // registering key-value pair
-    // so later I can retrieve by?   
-    reimbursementUserMap.set(reimbursementUser.id, reimbursementUser);
-    return reimbursementUser;
-}
-export function createReimbursementStatus(reimbursementStatus): Reimbursement {  
-    reimbursementStatusMap.set(reimbursementStatus.id, reimbursementStatus);
-    return reimbursementStatus;
+import db from '../util/pg-connector';
+
+
+//
+export function createReimbursement(reimbursement: Reimbursement):
+    Promise<Reimbursement[]> {
+    // enforce business rules
+    if (!reimbursement.reimbursementId) {
+        console.warn('Reimbursement item requires an ID');
+    }
+
+    // This operation will send a query to the database,
+    // which will then return a new promise that includes
+    // only the row data
+
+    return db.query(`INSERT INTO reimbursement (author, amount, dateSubmitted, dateResolved, 
+        description, resolver, status, type)
+    VALUES ($1 $2 $3 $4 $5 $6 $7 $8 $9) RETURNING reimbursementId, author, amount, dateSubmitted, 
+        dateResolved, description, resolver, status, type`,
+        [reimbursement.author, reimbursement.amount,reimbursement.dateSubmitted, 
+            reimbursement.dateResolved, reimbursement.description, reimbursement.resolver,
+            reimbursement.status,reimbursement.type])
+        .then((data) => {
+            return data.rows;
+        }).catch((err) => {
+            return [];
+        });
 }
 
-export function reimbursementUserById(id: number) {
-    return reimbursementUserMap.get(id);
-}
-export function reimbursementStatusById(id: number) {
-    return reimbursementStatusMap.get(id);
-} 
-//reimbursementUserService
-/*
-export function getReimbursementById(id) {
-    const result = users.find((v) => {
-        return v.userId == id;
-    });
-    return result;
+export async function getReimbursementById(ReimbursementId: number): Promise<Reimbursement> {
+    const result = await db.query(`SELECT reimbursementId, author, amount, dateSubmiited, 
+        dateResolved, description, resolver, status, type
+        FROM reimbursement WHERE id = $1`, [ReimbursementId]);
+    return new Reimbursement(result.rows[0]);
 }
 
-export function getAllUser() {
-    return users;
+export async function patchCoalesce(patch: Reimbursement) {
+    const result = await db.query(`UPDATE reimbursement SET author = COALESCE($1, author), \
+amount = COALESCE($2, quantity) WHERE id = $3 \
+RETURNING reimbursementId, author, amount;`,
+        [patch.reimbursementId, patch.author, patch.amount]);
+
+    if (result.rowCount === 0) {
+        // throw error, 404
+    } else {
+        return result.rows[0];
+    }
 }
 
-export function getLogin(userName, password) {
-    const result = users.find((v) => {
-        return v.userId == userName && password;
-    });
-    return result;
+
+export async function patchReimbursement(patch: Reimbursement) {
+    if (!patch.reimbursementId) {
+        // throw an error
+    }
+
+    const currentState = await getReimbursementById(patch.reimbursementId);
+    const newState = {
+        ...currentState, ...patch,
+    };
+
+    const result = await db.query(`UPDATE inventory SET item_name = $1, quantity = $2 WHERE id = $3 
+    RETURNING reimbursementid, author, amount;`,
+        [newState.author, newState.amount, newState.reimbursementId]);
+
+    if (result.rowCount === 0) {
+        // throw error, 404
+    } else {
+        return result.rows[0];
+    }
 }
-//export function getAllUser() {  //
-    //return users;
-*/

@@ -10,6 +10,7 @@
   "author": "David Chaparro",
   "license": "ISC",
   "dependencies": {
+    "@types/express-session": "^1.15.13",
     "@types/node": "^12.6.2",
     "@types/pg": "^7.4.14",
     "body-parser": "^1.19.0",
