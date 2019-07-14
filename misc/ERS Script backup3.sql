@@ -26,9 +26,10 @@ create table users (
 );
 
 insert into users (username, password, firstName, lastName, email, role) 
-	values ('jonJon', '1234', 'Jon', 'Jons', 'jon@yahoo.com', 1);
-	values ('dylanDylan', '5678', 'Dylan', 'Dylans', 'dylan@yahoo.com', 2);
-	values ('samSam', '9876', 'Sam', 'Sams', 'sam@yahoo.com', 3);
+	insert into users (username, password, firstName, lastName, email, role) 
+	values ('jonJon', '1234', 'Jon', 'Jons', 'jon@yahoo.com', 1),
+		('dylanDylan', '5678', 'Dylan', 'Dylans', 'dylan@yahoo.com', 2),
+		('samSam', '9876', 'Sam', 'Sams', 'sam@yahoo.com', 3);
 
 select * from users;
 

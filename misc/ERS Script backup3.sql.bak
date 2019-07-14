@@ -10,9 +10,8 @@ create table roles (
   	role varchar(30)
 );
 
-insert into roles (role) values ('admin'),('finance-manager'), ('user');
---insert into roles (role) values 'finance-manager',
---insert into roles(role) values 'user';
+insert into roles (role) values ('admin'), ('finance-manager'), ('user');
+
 
 select * from roles;
 
@@ -26,8 +25,10 @@ create table users (
 	role integer references roles (roleId)
 );
 
-insert into users (username, password, firstName, lastName, email) 
-	values ('maurywills', 'myWills', 'Maury', 'Wills', 'maury@yahoo.com');
+insert into users (username, password, firstName, lastName, email, role) 
+	values ('jonJon', '1234', 'Jon', 'Jons', 'jon@yahoo.com', 1);
+	values ('dylanDylan', '5678', 'Dylan', 'Dylans', 'dylan@yahoo.com', 2);
+	values ('samSam', '9876', 'Sam', 'Sams', 'sam@yahoo.com', 3);
 
 select * from users;
 
@@ -47,7 +48,7 @@ create table reimbursementType (
 	typeId serial primary key,
   	type varchar(30) not null unique
 );
-insert into reimbursementType (type) values ('Lodging'),('Travel'),('food'),('other');
+insert into reimbursementType (type) values ('Lodging'),('Travel'),('Food'),('Other');
 
 select * from reimbursementType;
 
@@ -63,8 +64,8 @@ create table reimbursements (
 	type integer references reimbursementtype(typeId)		
 );
 
-insert into reimbursements (amount, datesubmitted, dateresolved, description)
-	values (1234, 01012010, null, 'pending');
+insert into reimbursements (amount, datesubmitted, dateresolved, description, resolver, status, "type")
+	values (1234, 01012010, null, 'pending', 1, 2, 3);
 
 select * from reimbursements;
 
