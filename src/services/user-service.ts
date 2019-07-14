@@ -4,13 +4,25 @@ import ReimbursementType from "../models/ReimbursementType";
 import Role from "../models/Role";
 import db from '../util/pg-connector';
 
-export async function getUsers() {
-    const queryString = `select * from users`;
+export async function getUsers() { //Dylan's code to check connection
+    const queryString = `select username from users where firstname = 'Dylan'`;
+    //const queryString = `select users.username from users;`;
+    //const queryString = `select username, email from users WHERE username in ('samSam', 'jonJon')`;
+    //const queryString = `select * from users WHERE username in ('samSam', 'jonJon')`;
+    /*const queryString = `select username from users WHERE username like '%d' or 
+        username like '%s'`; this works */
+    //const queryString = `select * from users`; Dylan's example code
+    //select * from cats where fur_color = 'green' or fur_color = 'blue';
+
     const userResults = await db.query(queryString);
     
     console.log(userResults)
     return userResults;
-}
+} 
+/*export async function getUser(username, password) { // chappy's code
+    const queryString = `select username`
+} */
+
 
 export function createUser(user: User):
     Promise<User[]> {

@@ -32,7 +32,7 @@ userRouter.post('',
                 }
             });
     });
-
+    
 userRouter.get('/:userId',
     async (request: Request, response: Response) => {
         const id = parseInt(request.params.userId);
@@ -46,6 +46,14 @@ userRouter.get('/:userId',
         }
 
     });
+
+/* userRouter.get(`/:userName`, //chappy's code
+    async (request: Request, response: Response) => {
+        const usn = parseInt(request.params.userName);
+        const item = User = await userService.getUserById(usn);
+        if ()
+    }
+) */
 
 userRouter.patch('',
     async (request: Request, response: Response) => {
