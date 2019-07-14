@@ -6,6 +6,17 @@ import * as reimbursementService from '../services/reimbursement-service';
 
 const reimbursementRouter = express.Router();
 
+reimbursementRouter.post('/', (request: Request, response: Response) => {
+    const payload = request.body;
+    request.session.uid = payload.id;
+    request.session.name = payload.name;
+    response.sendStatus(201);
+});
+//reimbursementRouter.get('/', (request: Request, response: Response) => {
+    reimbursementRouter.get('/', (request: Request, response: Response) => {
+        response.json({message: `Hello from Reimbursement Page ${request.session.name}!`});
+    });
+
 reimbursementRouter.post('',
     (request: Request, response: Response) => {
         const reimbursement = new Reimbursement(request.body);

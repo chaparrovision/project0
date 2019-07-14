@@ -1,27 +1,29 @@
 import express, {Request, Response,} from 'express';
+import Role from '../models/Role';
 import User from '../models/User';
 import * as userService from '../services/user-service';
+import * as roleService from '../services/role-service';
 
-const userRouter = express.Router();
+const roleRouter = express.Router();
 
-userRouter.post('/', (request: Request, response: Response) => {
+roleRouter.post('/', (request: Request, response: Response) => {
     const payload = request.body;
     request.session.uid = payload.id;
     request.session.name = payload.name;
     response.sendStatus(201);
 });
 
-//userRouter.get('/', (request: Request, response: Response) => {
-    userRouter.get('/', async (request: Request, response: Response) => {
-        response.json({message: `Hello from user Page ${request.session.name}!`});
-        await userService.getUsers();
+//roleRouter.get('/', (request: Request, response: Response) => {
+    roleRouter.get('/', (request: Request, response: Response) => {
+        response.json({message: `Hello from Role Page ${request.session.name}!`});
     });
 
-userRouter.post('',
-    (request: Request, response: Response) => {
-        const user = new User(request.body);
 
-        userService.createUser(user)
+roleRouter.post('',
+    (request: Request, response: Response) => {
+        const role = new Role(request.body);
+
+        roleService.createRole(role)
             // This handler receives the row data
             // from the service method
             .then((rows) => {
@@ -33,13 +35,13 @@ userRouter.post('',
             });
     });
 
-userRouter.get('/:userId',
+roleRouter.get('/:rollId',
     async (request: Request, response: Response) => {
-        const id = parseInt(request.params.userId);
+        const id = parseInt(request.params.roleId);
 
-        const item: User = await userService.getUserById(id);
+        const item: Role = await roleService.getRoleById(id);
 
-        if (item.userId) {
+        if (item.roleId) {
             response.status(200).json(item);
         } else {
             response.sendStatus(404);
@@ -47,25 +49,26 @@ userRouter.get('/:userId',
 
     });
 
-userRouter.patch('',
+roleRouter.patch('',
     async (request: Request, response: Response) => {
-        const patch: User = request.body;
+        const patch: Role = request.body;
 
         // const patchedInv: Inventory = await inventoryService.patchInventory(patch);
-        const patchedInv: User = await userService.patchCoalesce(patch);
+        const patchedInv: Role = await roleService.patchCoalesce(patch);
         
-        if (patchedInv.userId) {
+        if (patchedInv.roleId) {
             response.json(patchedInv);
         } else {
 
         }
+
         response.sendStatus(200);
     });
 
-userRouter.delete('/:id',
+roleRouter.delete('/:id',
     (request: Request, response: Response) => {
 
         response.sendStatus(200);
     });
 
-export default userRouter;
+export default roleRouter;

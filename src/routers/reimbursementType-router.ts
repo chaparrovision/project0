@@ -5,6 +5,18 @@ import * as reimbursementTypeService from '../services/reimbursementType-service
 
 const reimbursementTypeRouter = express.Router();
 
+reimbursementTypeRouter.post('/', (request: Request, response: Response) => {
+    const payload = request.body;
+    request.session.uid = payload.id;
+    request.session.name = payload.name;
+    response.sendStatus(201);
+});
+
+//reimbursementTypeRouter.get('/', (request: Request, response: Response) => {
+    reimbursementTypeRouter.get('/', (request: Request, response: Response) => {
+        response.json({message: `Hello from ReimbursementType Page ${request.session.name}!`});
+    });
+
 reimbursementTypeRouter.post('',
     (request: Request, response: Response) => {
         const reimbursementType = new ReimbursementType(request.body);
