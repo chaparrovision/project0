@@ -44,6 +44,7 @@ loginRouter.post('/', async(request: Request, response: Response) => {
     //response.sendStatus(201);
 });
 //userRouter.get('/', (request: Request, response: Response) => {
+    
 loginRouter.get('/', (request: Request, response: Response) => {
     //response.json({message: `Hello from Login Page ${request.session.name}!`});  
     response.json({message: `Hello from Login Page!`});  

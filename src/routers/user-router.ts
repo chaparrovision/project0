@@ -1,7 +1,8 @@
 import express, {Request, Response,} from 'express';
 import User from '../models/User';
 import * as userService from '../services/user-service';
-
+import db from '../util/pg-connector';
+import { json } from 'body-parser';
 const userRouter = express.Router();
 
 userRouter.post('/', (request: Request, response: Response) => {
@@ -11,21 +12,25 @@ userRouter.post('/', (request: Request, response: Response) => {
     response.sendStatus(201);
 });
 
-/*
-Find Users
-·	URL /users
-·	Method: GET
-·	Allowed Roles finance-manager
-·	Response:
-·	[  User  ]
+// using the below for a GET getUsers test
+userRouter.get('/', async (request: Request, response: Response) => {
+    //console.log('IS THIS RUNNING', payload) //this runs
+    //await userService.getUsers();
+    const returnedValue = await userService.getUsers();
+    //created returnedValue from the called function getUsers()   
+    console.log(request.session) 
+    // response.status(201).json(rows[0]);
+    //const id = parseInt(request.params.userId);
+    response.json(returnedValue); //returns type, not value
+});
 
-*/
 
 //userRouter.get('/', (request: Request, response: Response) => {
     userRouter.get('/', async (request: Request, response: Response) => {
-        response.json({message: `Hello from user Page ${request.session.name}!`});
+        response.json({message: `Hello from user Page`});
         //await userService.getUsers();
-        await userService.getUsersByFinanceManager();
+        //let newVal = await userService.getUsers();
+        //response.status(200).send(`Welcome ${newVal}!`);
     });
 
 userRouter.post('',

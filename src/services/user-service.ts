@@ -13,24 +13,17 @@ import db from '../util/pg-connector';
         username like '%s'`; this works 
     //const queryString = `select * from users`; Dylan's example code
     //select * from cats where fur_color = 'green' or fur_color = 'blue';
-
-    const userResults = await db.query(queryString);
-    
+    const userResults = await db.query(queryString);   
     console.log(userResults)
     return userResults;
 } */
-export async function getUsersByFinanceManager() { //Dylan's code to check connection
-    const queryString = `select * from users`;
-    //const queryString = `select users.username from users;`;
-    const userResults = await db.query(queryString);
-    
-    console.log(userResults)
-    return userResults;
+/* GOING TO TRY TO RUN OTHER GETUSER FUNCTION FROM USERROUTER */
+export async function getUsers() { //Dylan's code to check connection
+    const queryString = `select username, firstname, lastname from users`;
+    const userResults = await db.query(queryString);  
+    //console.log('rows printed' + userResults)
+    return userResults.rows;   
 }
-
-/*export async function getUser(username, password) { // chappy's code
-    const queryString = `select username`
-} */
 
 
 export function createUser(user: User):
