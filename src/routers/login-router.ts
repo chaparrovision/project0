@@ -36,7 +36,7 @@ loginRouter.post('/', async(request: Request, response: Response) => {
     // match passwords, fail if they don't match
     // post message "welcome user"
     if (storedPassword === providedPassword) {
-        response.status(200).send('Welcome User!')
+        response.status(200).send(`Welcome ${payload.username}!`);
     } else {
         response.status(400).send('Username password combination invalid.  Try again.')
     }
@@ -45,7 +45,8 @@ loginRouter.post('/', async(request: Request, response: Response) => {
 });
 //userRouter.get('/', (request: Request, response: Response) => {
 loginRouter.get('/', (request: Request, response: Response) => {
-    response.json({message: `Hello from Login Page ${request.session.name}!`});  
+    //response.json({message: `Hello from Login Page ${request.session.name}!`});  
+    response.json({message: `Hello from Login Page!`});  
 });
 
 

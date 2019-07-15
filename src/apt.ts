@@ -56,7 +56,7 @@ app.use( (request: Request, response: Response, next) => {
  /* Routers - we will register two routers with the routes: 'cats' and 'food'
  We need to remember to register the routes here */
 //app.use('/userIds', userIdRouter); //specifies the name called on Postman, like localhost:3000/userIds
-app.use('/user', userRouter); //specifies the name called on Postman, like localhost:3000/userIds
+app.use('/users', userRouter); //specifies the name called on Postman, like localhost:3000/userIds
 app.use('/login', loginRouter);
 app.use('/reimbursement', reimbursementRouter) 
 app.use('/reimbursementStatus', reimbursementStatusRouter) 

@@ -11,10 +11,21 @@ userRouter.post('/', (request: Request, response: Response) => {
     response.sendStatus(201);
 });
 
+/*
+Find Users
+·	URL /users
+·	Method: GET
+·	Allowed Roles finance-manager
+·	Response:
+·	[  User  ]
+
+*/
+
 //userRouter.get('/', (request: Request, response: Response) => {
     userRouter.get('/', async (request: Request, response: Response) => {
         response.json({message: `Hello from user Page ${request.session.name}!`});
-        await userService.getUsers();
+        //await userService.getUsers();
+        await userService.getUsersByFinanceManager();
     });
 
 userRouter.post('',
