@@ -6,13 +6,13 @@ import * as roleService from '../services/role-service';
 
 const roleRouter = express.Router();
 
-roleRouter.post('/', (request: Request, response: Response) => {
+/*roleRouter.post('/', (request: Request, response: Response) => {
     const payload = request.body;
     request.session.uid = payload.id;
     request.session.name = payload.name;
     response.sendStatus(201);
 });
-
+*/
 //roleRouter.get('/', (request: Request, response: Response) => {
     roleRouter.get('/', (request: Request, response: Response) => {
         response.json({message: `Hello from Role Page ${request.session.name}!`});

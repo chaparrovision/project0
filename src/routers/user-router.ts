@@ -3,6 +3,7 @@ import User from '../models/User';
 import * as userService from '../services/user-service';
 import db from '../util/pg-connector';
 import { json } from 'body-parser';
+
 const userRouter = express.Router();
 
 userRouter.post('/', (request: Request, response: Response) => {
@@ -12,25 +13,17 @@ userRouter.post('/', (request: Request, response: Response) => {
     response.sendStatus(201);
 });
 
-// using the below for a GET getUsers test
+// using the below for a GET getUsers
 userRouter.get('/', async (request: Request, response: Response) => {
-    //console.log('IS THIS RUNNING', payload) //this runs
-    //await userService.getUsers();
-    const returnedValue = await userService.getUsers();
-    //created returnedValue from the called function getUsers()   
-    console.log(request.session) 
-    // response.status(201).json(rows[0]);
-    //const id = parseInt(request.params.userId);
+    const returnedValue = await userService.getUsers();      
+    console.log(request.session);
     response.json(returnedValue); //returns type, not value
 });
 
 
 //userRouter.get('/', (request: Request, response: Response) => {
-    userRouter.get('/', async (request: Request, response: Response) => {
-        response.json({message: `Hello from user Page`});
-        //await userService.getUsers();
-        //let newVal = await userService.getUsers();
-        //response.status(200).send(`Welcome ${newVal}!`);
+userRouter.get('/', async (request: Request, response: Response) => {
+    response.json({message: `Hello from user Page`});
     });
 
 userRouter.post('',
@@ -49,27 +42,26 @@ userRouter.post('',
             });
     });
     
-userRouter.get('/:userId',
-    async (request: Request, response: Response) => {
+userRouter.get('/:userId', async (request: Request, response: Response) => {
+        console.log('are you seeing me?'); //This works to this point
         const id = parseInt(request.params.userId);
-
+        console.log('is this working ', request.params);
+        //const body = request.body; // this was a test
+        //console.log(body);
         const item: User = await userService.getUserById(id);
-
+        //console.log('Chappy comes from userId ' + id);
+        console.log('this is item var', item.userId)
         if (item.userId) {
+            console.log('chappy after the first if')
             response.status(200).json(item);
         } else {
+            console.log('chappy after the else')
             response.sendStatus(404);
         }
 
     });
 
-/* userRouter.get(`/:userName`, //chappy's code
-    async (request: Request, response: Response) => {
-        const usn = parseInt(request.params.userName);
-        const item = User = await userService.getUserById(usn);
-        if ()
-    }
-) */
+
 
 userRouter.patch('',
     async (request: Request, response: Response) => {
@@ -85,11 +77,11 @@ userRouter.patch('',
         }
         response.sendStatus(200);
     });
-
+/*
 userRouter.delete('/:id',
     (request: Request, response: Response) => {
 
         response.sendStatus(200);
     });
-
+*/
 export default userRouter;

@@ -1,5 +1,5 @@
 import express, {Request, Response,} from 'express';
-//import Reimbursement from '../models/Reimbursement';
+import Reimbursement from '../models/Reimbursement';
 import ReimbursementType from '../models/ReimbursementType';
 import * as reimbursementTypeService from '../services/reimbursementType-service';
 

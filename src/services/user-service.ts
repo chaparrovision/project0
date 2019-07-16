@@ -4,7 +4,7 @@ import ReimbursementType from "../models/ReimbursementType";
 import Role from "../models/Role";
 import db from '../util/pg-connector';
 
-/*export async function getUsers() { //Dylan's code to check connection
+/*export async function getUsers() Sample ProgreSQL code below
     const queryString = `select username from users where firstname = 'Dylan'`;
     //const queryString = `select users.username from users;`;
     //const queryString = `select username, email from users WHERE username in ('samSam', 'jonJon')`;
@@ -13,30 +13,26 @@ import db from '../util/pg-connector';
         username like '%s'`; this works 
     //const queryString = `select * from users`; Dylan's example code
     //select * from cats where fur_color = 'green' or fur_color = 'blue';
-    const userResults = await db.query(queryString);   
-    console.log(userResults)
-    return userResults;
-} */
-/* GOING TO TRY TO RUN OTHER GETUSER FUNCTION FROM USERROUTER */
-export async function getUsers() { //Dylan's code to check connection
-    const queryString = `select username, firstname, lastname from users`;
+*/
+ 
+//GETUSER FUNCTION FROM USERROUTER  
+export async function getUsers() {
+    const queryString = `select username, firstname, lastname, role from users`;
     const userResults = await db.query(queryString);  
     //console.log('rows printed' + userResults)
+    // checking if finance manager by searching for role=3
+    //return userResults.rows[1];  // this get individual row.  woo hoo!
     return userResults.rows;   
 }
 
 
-export function createUser(user: User):
-    Promise<User[]> {
+export function createUser(user: User): Promise<User[]> {
     // enforce business rules
     if (!user.userId) {
         console.warn('User requires name');
     }
-
-    // This operation will send a query to the database,
-    // which will then return a new promise that includes
-    // only the row data
-
+    // The below operation will send a query to the database, which
+    // will then return a new promise that includes only the row data
     return db.query(`INSERT INTO user (userId, userName, password, firstName, lastName, email, role)
     VALUES ($1, $2) RETURNING userId, userName, password, firstName, lastName, email, role`,
         [user.userId, user.userName])
@@ -47,11 +43,10 @@ export function createUser(user: User):
         });
 }
 
-export async function getUserById(userId: number): Promise<User> {
-    const result = await db.query(`SELECT userId, userName, password, firstName, lastName,
-        email, role
-        FROM user WHERE userId = $1`, [userId]);
-    return new User(result.rows[0]);
+//export async function getUserById(userId: number): Promise<User> {
+export async function getUserById(userId: number) {
+    const result = await db.query(`SELECT * FROM users WHERE userid = $1`, [userId]);
+    return result.rows[0];
 }
 
 export async function patchCoalesce(patch: User) {

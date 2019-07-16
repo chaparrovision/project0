@@ -13,6 +13,11 @@ loginRouter.post('/', async(request: Request, response: Response) => {
     //1. put user-provided info into variables
     request.session.username = payload.username; //info has arrived  
     request.session.password = payload.password;// info has arrived
+    request.session.userid = payload.userid;// info has arrived
+    request.session.firstname = payload.firstname;// info has arrived
+    request.session.lastname = payload.lastname;// info has arrived
+    request.session.email = payload.email;// info has arrived
+    request.session.role = payload.role;// info has arrived
     console.log(request.session) 
     // match username var against db
     // prepare varname - query 

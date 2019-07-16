@@ -1,6 +1,6 @@
 import Reimbursement from "../models/Reimbursement";
 import ReimbursementType from "../models/ReimbursementType";
-//import Role from "../models/Role";
+import Role from "../models/Role";
 import db from '../util/pg-connector';
 
 
