@@ -51,6 +51,13 @@ userRouter.get('/:userId', async (request: Request, response: Response) => {
         const item: User = await userService.getUserById(id);
         //console.log('Chappy comes from userId ' + id);
         console.log('this is item var', item)
+     /* if (!item.userId) {
+            console.log('woo hoo!')
+            response.status(200).json(item);
+        } else {
+            console.log('chappy after the else')
+            response.sendStatus(404);
+        } */
         if (!item.userId) {
             console.log('woo hoo!')
             response.status(200).json(item);
@@ -58,7 +65,7 @@ userRouter.get('/:userId', async (request: Request, response: Response) => {
             console.log('chappy after the else')
             response.sendStatus(404);
         }
-    });
+    }); 
 
 
 

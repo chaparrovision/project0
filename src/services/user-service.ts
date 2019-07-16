@@ -45,7 +45,8 @@ export function createUser(user: User): Promise<User[]> {
 
 //export async function getUserById(userId: number): Promise<User> {
 export async function getUserById(userId: number) {
-    const result = await db.query(`SELECT * FROM users WHERE userid = $1`, [userId]);
+    //const result = await db.query(`SELECT * FROM users WHERE userid = $1`, [userId]);
+    const result = await db.query(`SELECT userid, username, firstname, lastname FROM users WHERE userid = $1`, [userId]);
     return result.rows[0];
 }
 
