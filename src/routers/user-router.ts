@@ -48,17 +48,10 @@ userRouter.get('/:userId', async (request: Request, response: Response) => {
         console.log('is this working ', id);
         //const body = request.body; // this was a test
         //console.log(body);
-        const item: User = await userService.getUserById(id);
+        const item: User = await userService.getUserById(id); //values put in item
         //console.log('Chappy comes from userId ' + id);
-        console.log('this is item var', item)
-     /* if (!item.userId) {
-            console.log('woo hoo!')
-            response.status(200).json(item);
-        } else {
-            console.log('chappy after the else')
-            response.sendStatus(404);
-        } */
-        if (!item.userId) {
+        console.log('this is item var', item) //console prints 'item', the correct user
+        if (!item.userId) { // Code is supposed to check against .
             console.log('woo hoo!')
             response.status(200).json(item);
         } else {
