@@ -24,7 +24,7 @@ export function createReimbursementStatus(reimbursementStatus: ReimbursementStat
             return [];
         });
 }
-
+//Below is code from user-service for getUserById.  Below that is template code/
 export async function getReimbursementStatusById(statusId: number): Promise<ReimbursementStatus> {
     const result = await db.query(`SELECT statusId "statusId", status
         FROM reimbursementStatus WHERE statusId = $1`, [statusId]);
