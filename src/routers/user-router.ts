@@ -45,20 +45,19 @@ userRouter.post('',
 userRouter.get('/:userId', async (request: Request, response: Response) => {
         console.log('are you seeing me?'); //This works to this point
         const id = parseInt(request.params.userId);
-        console.log('is this working ', request.params);
+        console.log('is this working ', id);
         //const body = request.body; // this was a test
         //console.log(body);
         const item: User = await userService.getUserById(id);
         //console.log('Chappy comes from userId ' + id);
-        console.log('this is item var', item.userId)
-        if (item.userId) {
-            console.log('chappy after the first if')
+        console.log('this is item var', item)
+        if (!item.userId) {
+            console.log('woo hoo!')
             response.status(200).json(item);
         } else {
             console.log('chappy after the else')
             response.sendStatus(404);
         }
-
     });
 
 
