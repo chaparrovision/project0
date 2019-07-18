@@ -49,10 +49,9 @@ export async function getUserById(userId: number) {
     const result = await db.query(`SELECT userid, username, firstname, lastname FROM users WHERE userid = $1`, [userId]);
         if (result.rowCount === 0) {
             return ("Not in the database");
-        }
+        }      
     return result.rows[0];
 }
-
 export async function patchCoalesce(patch: User) {
     const result = await db.query(`UPDATE users SET userId = COALESCE($1, userId), \
 role = COALESCE($2, userName) WHERE id = $3 \

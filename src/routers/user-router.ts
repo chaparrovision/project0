@@ -43,17 +43,15 @@ userRouter.post('',
     });
     
 userRouter.get('/:userId', async (request: Request, response: Response) => {
-        console.log('are you seeing me?'); //This works to this point
+        console.log('are you seeing me?'); 
         const id = parseInt(request.params.userId);
         console.log('is this working ', id);
-        //const body = request.body; // this was a test
-        //console.log(body);
+        
         const item: User = await userService.getUserById(id); //values put in item
         //console.log('Chappy comes from userId ' + id);
         console.log('this is item var', item) //console prints 'item', the correct user
         
-        response.status(200).json(item);
-        
+        response.status(200).json(item);        
     }); 
 
 
