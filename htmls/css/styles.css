@@ -16,6 +16,9 @@ body {background-color: gray; margin: -20px 0;}
 .submits {margin-top:20px;padding:8px;border:1px solid black;border-radius: 6px;cursor: pointer;}
 #reimTypeRow2 {text-align: left;}
 #reimStatusRow2 {text-align: left;}
+/*.containers {box-sizing: border-box;} */
+
+
 
 
 

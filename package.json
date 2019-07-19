@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec ts-node src/App.ts"
+    "start": "nodemon --exec ts-node src/apt.ts"
   },
   "author": "David Chaparro",
   "license": "ISC",

@@ -36,13 +36,13 @@ loginRouter.post('/', async(req: Request, response: Response) => {
     };
 
     // true - goto next step
-    // put passwords into new variables for ease of reading and comprehension
+    // put passwords into new vars for ease of reading and comprehension but below if could be:
+    // if (usernamePasswordResults.rows[0].password === payload.password) {
     const storedPassword = usernamePasswordResults.rows[0].password; //from the db
     const providedPassword = payload.password; // from input
     console.log('provided username and password')
-    // match passwords, fail if they don't match
-    // post message "welcome user"
-    if (storedPassword === payload.password) {
+    // match passwords, fail if they don't match, else post message "welcome user"
+    if (storedPassword === providedPassword) {
         response.status(200).send(`Welcome ${payload.username}!`);
     } else {
         response.status(400).send('Username password combination invalid.  Try again.')
@@ -53,7 +53,6 @@ loginRouter.get('/', (request: Request, response: Response) => {
     //response.json({message: `Hello from Login Page ${request.session.name}!`});  
     response.json({message: `Hello from Login Page!`});  
 });
-
 
 //export default loginRouter;
 export default loginRouter;

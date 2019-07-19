@@ -22,7 +22,7 @@ export async function getUsers() {
     //console.log('rows printed' + userResults)
     // checking if finance manager by searching for role=3
     //return userResults.rows[1];  // this get individual row.  woo hoo!
-    return userResults.rows;   
+    return userResults.rows;   //sends result back to user-router request
 }
 
 
@@ -45,8 +45,8 @@ export function createUser(user: User): Promise<User[]> {
 
 //export async function getUserById(userId: number): Promise<User> {
 export async function getUserById(userId: number) {
-    //const result = await db.query(`SELECT * FROM users WHERE userid = $1`, [userId]);
-    const result = await db.query(`SELECT userid, username, firstname, lastname FROM users WHERE userid = $1`, [userId]);
+    const result = await db.query(`SELECT userid, username, firstname, lastname, role FROM users WHERE userid = $1`, [userId]);
+        console.log('getByUserId', result.rows[userId]);
         if (result.rowCount === 0) {
             return ("Not in the database");
         }      

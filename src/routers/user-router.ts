@@ -16,8 +16,8 @@ userRouter.post('/', (request: Request, response: Response) => {
 // using the below for a GET getUsers
 userRouter.get('/', async (request: Request, response: Response) => {
     const returnedValue = await userService.getUsers();      
-    console.log(request.session);
-    response.json(returnedValue); //returns type, not value
+    console.log("Hi there!"); //trying to isolate the role value
+    response.json(returnedValue); 
 });
 
 
@@ -43,12 +43,8 @@ userRouter.post('',
     });
     
 userRouter.get('/:userId', async (request: Request, response: Response) => {
-        console.log('are you seeing me?'); 
-        const id = parseInt(request.params.userId);
-        console.log('is this working ', id);
-        
-        const item: User = await userService.getUserById(id); //values put in item
-        //console.log('Chappy comes from userId ' + id);
+        const id = parseInt(request.params.userId); //userId now in const id
+        const item: User = await userService.getUserById(id); //calls function from user-service
         console.log('this is item var', item) //console prints 'item', the correct user
         
         response.status(200).json(item);        
