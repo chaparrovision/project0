@@ -1,0 +1,67 @@
+:body {
+    --header-height: 40px;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+header {
+    background-color: lightblue;
+    
+    padding: 10px;
+    color: white;
+    background: black;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 3px;
+    height: var(--header-height);
+}
+
+/* > child selector */
+/* any h1 that is directly within a header */
+#hd1 {
+    margin: 0;
+}
+
+nav {
+    background-color: lightcoral;
+    /* total width = 160px + 20px * 2 = 200px*/
+    
+    width: 160px;
+    padding: 20px;
+    /* Height of the nav should be equal to the total height of the view minus
+    the height of the header, because we should consider the size of the header in the navbar's default
+    height */
+    height: calc(100% - 40px);
+    display: inline-block;
+    flex-grow: 0;
+}
+
+/*nav > ul {
+    margin: 0;
+} */
+.mainButtonsUl > li {
+    margin-bottom: 8px;
+    padding:8px;
+    list-style-type: none;
+    text-align: left;
+    border: 1px solid black;border-radius:6px;cursor: pointer;
+    background: silver;
+}
+
+#nav-content-container {
+    height: calc(100% - 60px);
+    display: flex;
+}
+
+#content-area {
+    background-color: lightgreen;
+    height: 10px;
+    width: 50px;
+    flex-grow: 1;
+    min-height: 100%;   
+}
+.content-paragraphs {
+    margin: 20px;
+}

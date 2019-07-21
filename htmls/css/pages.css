@@ -1,0 +1,93 @@
+:body {
+    --header-height: 40px;
+}
+body, html {
+    background: linear-gradient(to right, black, white, black); 
+    margin-top: -10px;margin-bottom: 0;
+    height: 100%;
+}
+
+.headerDivs {
+    background: black;height:46px;
+}
+#indexHeaderDiv {
+    background: linear-gradient(to right, black, white);
+}
+.headers {
+    margin: 20px;color: white;
+}
+
+.logins {
+    float: right;font-size:14px;margin-top:12px;
+}
+#ers_login {
+    text-shadow: 1px 1px 1px white;
+}
+nav {
+    background-color: black;
+    /* total width = 160px + 20px * 2 = 200px*/   
+    width: 160px;
+    padding: 20px;
+    /* Height of the nav should be equal to the total height of the view minus
+    the height of the header, because we should consider the size of the header in the navbar's default
+    height */
+    height: calc(100% - 40px);
+    display: inline-block;
+    flex-grow: 0;
+}
+#nav-content-container {
+    height: calc(100% - 60px);
+    display: flex;
+}
+
+.content-areas {
+    background:linear-gradient(white, lightgreen, white);
+    height: 10px;
+    width: 50px;
+    flex-grow: 1;
+    min-height: 100%;
+}
+.mainButtonsUl > li {
+    margin-bottom: 8px;
+    padding:8px;
+    list-style-type: none;
+    text-align: left;
+    border: 1px solid black;border-radius:6px;cursor: pointer;
+    background: silver;
+}
+.content-paragraphs {
+    margin: 20px;
+}
+#user-content-area {display: none;}
+#get-user-content-area {display: none;}
+
+.tables {
+    margin: 20px;
+    width: 100%;
+}
+.table-captions {
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.tables  td {
+
+}
+label {
+    cursor: pointer;
+}
+.column1-data {
+    width: 50%;
+}
+
+.submits {
+    padding:6px 12px;
+    border: 1px solid silver;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+.submit-buttons-div {
+    text-align: center;
+}

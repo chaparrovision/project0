@@ -1,4 +1,4 @@
-body {background-color: gray; margin: -20px 0;}
+body {background: linear-gradient(to right, black, white, black); margin: -20px 0;}
 .inputs {margin-left:1px;margin-right:20px;margin-bottom: 6px;margin-top:6px;
     border:1px solid black;border-radius:6px;padding: 6px 4px;}
 .submitBtns {padding:10px;border:1px solid black;border-radius: 6px;}
@@ -10,13 +10,21 @@ body {background-color: gray; margin: -20px 0;}
 .headers {margin: 20px;color: white;}
 .radios {margin-right:30px;cursor: pointer;}
 .logins {float: right;font-size:14px;margin-top:12px;}
-#indexMainContent {font-size:30px; position: absolute;top:50%;left:50%;transform: translate(-50%, -50%);}
+#indexMainContent {font-size:30px; border:2px solid black;padding:10px;box-shadow: 1px 1px 1px black;
+    background: linear-gradient(to right, black, white);
+    position: absolute;top:50%;left:50%;
+    transform: translate(-50%, -50%);}
 #ers_login {text-shadow: 1px 1px 1px white;}
 /*#submitStatus {margin-top:20px;padding:8px;border:1px solid black;border-radius: 6px;} */
 .submits {margin-top:20px;padding:8px;border:1px solid black;border-radius: 6px;cursor: pointer;}
 #reimTypeRow2 {text-align: left;}
 #reimStatusRow2 {text-align: left;}
+#forlabel4username, #forlabel4passwordInput {font-size:16px;cursor: pointer;text-align: left;}
+.directions {margin-top:0;}
+.incorrects {color:red;font-size: 20px;display:none;}
+/*button {cursor: pointer;padding:8px;} */
 /*.containers {box-sizing: border-box;} */
+
 
 
 

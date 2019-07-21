@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WelcomePage</title>
+    <link rel="stylesheet" href="css/pages.css">
+    <script>
+        function getUserInfoDiv() {
+            document.getElementById("welcome-content-area").style.display="none";
+            document.getElementById("get-user-content-area").style.display="none";
+            document.getElementById("user-content-area").style.display="block";
+        };
+        function search4userinfoDiv() {
+            document.getElementById("welcome-content-area").style.display="none";
+            document.getElementById("user-content-area").style.display="none";
+            document.getElementById("get-user-content-area").style.display="block";
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="headerDivs" id="indexHeaderDiv">
+        <header class="headers" id="indexHeader">
+            <h1>ERS:  Expense Reimbursement System
+                <span class="logins" id="ers_login"><a href="user.html">Logout</a></span>
+            </h1>                    
+        </header>
+    </div>
+    <div id="nav-content-container">
+        <nav class="navs" id="mainNav">
+            <ul class="mainButtonsUl">               
+                <li class="endpoints" id="to-get-user-info-btn" onclick="getUserInfoDiv()">Employee Information</li>
+                <li class="endpoints" id="to-get-all-users-info-btn" onclick="search4userinfoDiv()">Get All Users</li>
+                <li class="endpoints" id="to-get-all-users-info-btn" onclick="search4userinfoDiv()">Get User By Id</li>
+                <li class="endpoints" id="to-get-all-users-info-btn" onclick="search4userinfoDiv()">Update User</li>
+                <li class="endpoints" id="to-status-btn">Get Reimbursement By Status</li> 
+                <li class="endpoints" id="to-status-btn">Get Reimbursement By Type</li> 
+                <li class="endpoints" id="to-newExpenseRequest-btn">Get All Reimbursement</li> 
+                <li class="endpoints" id="to-newExpenseRequest-btn">Update Reimbursements</li> 
+                <!--<li class="endpoints" id="to-newExpenseRequest-btn">Create New Reimbursement</li>
+                <li class="endpoints" id="to-newExpenseRequest-btn">Create New Reimbursement</li> -->
+            </ul>
+        </nav>
+        
+        <div class="content-areas" id="welcome-content-area">
+            <p class='content-paragraphs' id="">
+                Select a button on the left panel to get started:
+            </p>
+        </div>
+        <div class="content-areas" id="user-content-area">
+            <p class='content-paragraphs' id="">
+                Usersname: happychappy<br/>
+                Firstname: Happy<br>
+                Lastname: Chappy<br>
+                Email:happychappy@yahoo.com<br>
+                UserId: 2<br>
+                Role:  Admin
+            </p>
+        </div>
+        <div class="content-areas" id="get-user-content-area">
+            <table class="tables" id="get-user-content-table">
+                <caption class="table-captions" id="get-user-contents">SEARCH FOR USER</caption><br>
+                <tr>
+                    <td class="column1-data" id="usernameTd">
+                        <label for="username">Enter Username: &nbsp; </label>
+                        <input type="text" id="username" class="inputs" name="username" 
+                            maxlength="40" size="30px"/>
+                    </td>
+                    <td class="column2-data" id="">
+                        Empty for now
+                    </td>
+                </tr>
+                <tr>
+                    <td class="column1-data" id="first-nameTd">
+                        <label for="first-name-input">Enter First Name: </label>
+                        <input type="text" id="first-name-input" class="inputs" name="first-name-input" 
+                             maxlength="40" size="30px"/>
+                    </td>
+                    <td class="column2-data" id="">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td class="column1-data" id="last-nameTd">
+                        <label for="last-name-input">Enter Last Name: </label>
+                         <input type="text" id="last-name-input" class="inputs" name="last-name-input" 
+                             maxlength="40" size="30px"/>
+                    </td>
+                     <td class="column2-data" id="">
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td class="column1-data" id="roleTd">
+                        <label for="role-input">Enter Employee Role: </label>
+                         <input type="text" id="role-input" class="inputs" name="last-name-input" 
+                             maxlength="10" size="20px"/>
+                    </td>
+                    <td class="column2-data" id="">
+                            &nbsp;
+                     </td>
+                 </tr>
+            </table>
+            <div class="submit-buttons-div" id="">
+                <button type="submit" id="submitsearch4userInfoButton" class="submits">Submit</button>
+            </div>
+            <hr>
+            
+        </div>
+
+        <script>
+            document.getElementById("search4userInfoButton").addEventListener("click", submitUserSearch());
+        </script>
+    </div>
+</body>
+</html>
